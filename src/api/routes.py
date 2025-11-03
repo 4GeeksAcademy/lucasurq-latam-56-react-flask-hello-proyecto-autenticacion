@@ -48,7 +48,7 @@ def login():
 @api.route('/private', methods=['GET'])
 def private():
     try:
-        verify_jwt_in_request()  # 🔥 fuerza la verificación manual del token
+        verify_jwt_in_request()  # Verifico manualmente el token.-
         user_id = get_jwt_identity()
         user = User.query.get(user_id)
 
