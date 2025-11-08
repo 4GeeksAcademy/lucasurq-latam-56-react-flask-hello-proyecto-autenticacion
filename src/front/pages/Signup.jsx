@@ -8,12 +8,15 @@ export const Signup = () => {
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
+    // Variable de entorno
+    const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
 
-            const res = await fetch("https://shadowy-phantasm-jxx6xxp69j3qq4x-3001.app.github.dev/api/signup", {
+            const res = await fetch(`${API_URL}/api/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password })

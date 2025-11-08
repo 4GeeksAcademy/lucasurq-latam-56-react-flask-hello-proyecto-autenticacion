@@ -8,15 +8,15 @@ export const Private = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    const fetch_user = async () => {
+    const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 
+    const fetch_user = async () => {
         setError("");
         setLoading(true)
 
-
         try {
             const token = sessionStorage.getItem("token")
-            const res = await fetch("https://shadowy-phantasm-jxx6xxp69j3qq4x-3001.app.github.dev/api/private", {
+            const res = await fetch(`${API_URL}/api/private`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + token

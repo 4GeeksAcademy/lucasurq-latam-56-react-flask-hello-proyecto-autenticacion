@@ -9,13 +9,16 @@ export const Login = () => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
+    // Variable de entorno
+    const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
         setError("")
 
         try {
-            const res = await fetch('https://shadowy-phantasm-jxx6xxp69j3qq4x-3001.app.github.dev/api/login', {
+            const res = await fetch(`${API_URL}/api/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password })
